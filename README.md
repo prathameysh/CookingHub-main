@@ -10,7 +10,7 @@
 - 🧾 View detailed cooking and preparation times
 - 📱 Fully responsive design — works across desktop and mobile
 - 📄 Static HTML pages with clean structure and styling
-- 🔗 Social media footer integration (Instagram, LinkedIn, X)
+- 🔗 Social media footer integration (Github, LinkedIn)
 - 🔄 Smooth navigation through Home, About, Recipes, and Contact pages
 
 ---
@@ -94,7 +94,7 @@ Contributions welcome! You can help by:
 🔧 Submitting pull requests with improvements
 
 👨‍💻 Author
-Prathamesh Yeshwanth
+Prathamesh Gavatre
 GitHub | LinkedIn
 
 📄 License
