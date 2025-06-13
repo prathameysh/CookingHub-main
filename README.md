@@ -20,34 +20,6 @@
 - **Frontend**: HTML, CSS, JavaScript
 - **Deployment**: Hosted via modern static‑site platforms
 
----
-
-## 📂 Project Structure
-
-CookingHub-main/
-│
-├── index.html # Homepage
-├── about.html # About us page
-├── recipes.html # Recipes listing page
-├── contact.html # Contact form page
-│
-├── css/
-│ └── styles.css # Main stylesheet
-│
-├── js/
-│ └── app.js # Optional JavaScript for interactivity
-│
-├── images/ # Recipe and UI image assets
-│ └── example.jpg
-│
-└── LICENSE # Project license
-
-yaml
-Copy
-Edit
-
----
-
 ## 🚀 Getting Started
 
 1. **Clone the repository**
@@ -82,33 +54,50 @@ Contains responsive design rules, layout styling, fonts, and color definitions.
 app.js
 Optional JavaScript for added interactivity, form handling, or dynamic features.
 
-📬 Contributing
-Contributions welcome! You can help by:
+# Simple workflow for deploying static content to GitHub Pages
 
-💡 Enhancing UI/UX or adding new styling
+name: Deploy static content to Pages
 
-🍲 Adding new recipes or categories
+on:
 
-🐞 Reporting issues or bugs via GitHub Issues
+# Runs on pushes targeting the default branch
 
-🔧 Submitting pull requests with improvements
+push:
+branches: ["main"]
 
-👨‍💻 Author
-Prathamesh Gavatre
-GitHub | LinkedIn
+# Allows you to run this workflow manually from the Actions tab
 
-📄 License
-This project is open-source and distributed under the MIT License. See the LICENSE file for details.
+workflow_dispatch:
 
-📝 Optional Tips
-To include screenshots, add .png or .jpg images to the images/ folder and reference them like:
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 
-markdown
-Copy
-Edit
-![Homepage screenshot](images/homepage.png)
-If using custom fonts or external libraries, reference them in your <head> section of HTML.
+permissions:
+contents: read
+pages: write
+id-token: write
 
-Update app.js functions if you add interactive elements like form validation or filtering the recipes list.
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 
-Give it a ⭐ on GitHub if you enjoy exploring CookingHub!
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+
+concurrency:
+group: "pages"
+cancel-in-progress: false
+
+jobs:
+
+# Single deploy job since we're just deploying
+
+deploy:
+environment:
+name: github-pages
+url: ${{ steps.deployment.outputs.page_url }}
+runs-on: ubuntu-latest
+steps: - name: Checkout
+uses: actions/checkout@v3 - name: Setup Pages
+uses: actions/configure-pages@v3 - name: Upload artifact
+uses: actions/upload-pages-artifact@v2
+with: # Upload entire repository
+path: "." - name: Deploy to GitHub Pages
+id: deployment
+uses: actions/deploy-pages@v2
